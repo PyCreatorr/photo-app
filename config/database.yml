@@ -25,7 +25,7 @@ development:
   <<: *default
   database: photoApp
   username: postgres
-  password: Fidji45_367
+  password: <%= Rails.application.credentials.dig(:db_development, :local_db_password) %>
   host: localhost
   port: 5432
 
@@ -63,7 +63,7 @@ development:
   <<: *default
   database: photoApp
   username: postgres
-  password: Fidji45_367
+  password: <%= Rails.application.credentials.dig(:db_development, :local_db_password) %>
   host: localhost
   port: 5432
 
@@ -101,9 +101,8 @@ production:
   # username: photo_app
   # password: <%= ENV["PHOTO_APP_DATABASE_PASSWORD"] %>
 
-  database: postgres
-  username: postgres
+  database: <%= ENV["PHOTO_APP_DATABASE_DATABASE"] %>
+  username: <%= ENV["PHOTO_APP_DATABASE_USERNAME"] %>
   password: <%= ENV["PHOTO_APP_DATABASE_PASSWORD"] %>
-  # password: Fidji45_367
-  host: db.fiinowdkicyippxrttqz.supabase.co
-  port: 5432
+  host: <%= ENV["PHOTO_APP_DATABASE_HOST"] %>
+  port: <%= ENV["PHOTO_APP_DATABASE_PORT"] %>
