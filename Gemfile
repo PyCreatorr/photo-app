@@ -73,3 +73,11 @@ group :test do
   gem "selenium-webdriver"
 
 end
+
+gem "devise", "~> 4.9"
+
+gem 'devise-tailwinded'
+
+# add to see structed rails console
+# rails c Hirb.enable
+gem 'hirb'
