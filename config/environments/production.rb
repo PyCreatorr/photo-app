@@ -15,6 +15,7 @@ Rails.application.configure do
   # Mailer settings (SENDGRID)
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { :host => 'photo-app-rails7-6d3f2293393a.herokuapp.com', :protocol => 'https' }
+  config.action_mailer.default_options = {:from => "support@devekma.fun"}
 
 
   # Full error reports are disabled and caching is turned on.
