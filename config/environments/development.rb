@@ -14,7 +14,7 @@ Rails.application.configure do
   # Mailer settings (SENDGRID)
   config.action_mailer.delivery_method = :smtp # or :smtp test
   config.action_mailer.default_url_options = { :host => 'http://127.0.0.1:8001'}
-  config.action_mailer.default_options = {:from => "support@devekma.fun"}
+  # config.action_mailer.default_options = {:from => "support@devekma.fun"}
 
   # Show full error reports.
   config.consider_all_requests_local = true
