@@ -10,7 +10,7 @@ class CheckoutController < ApplicationController
             customer: current_user.stripe_customer_id,
             payment_method_types: ['card'],
             allow_promotion_codes: true,
-            mode: 'payment',
+            #mode: 'payment',
 
             #line_items:
             
