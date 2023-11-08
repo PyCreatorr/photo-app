@@ -9,15 +9,19 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "https://js.stripe.com/v3/" %>
   </head>
 
   <body>
+  <div id="reload"></div>
     <div class="min-h-full">
       <%= render 'layouts/navbar' %>
       <%#= render 'layouts/header', header: request.path == '/users/edit' ? 'Profile' : "Dashboard"  %>
       <main class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
       <%= render "layouts/flash"%>
+
         <%= yield %>
+
       </main>
       <%= render partial: "layouts/footer" %>
     </div>

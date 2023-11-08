@@ -1,0 +1,22 @@
+<h1>Pricing</h1>
+<% @price = Stripe::Price.list( lookup_keys: ['pro_month', 'pro_year', 'starter_month', 'starter_year'], expand: [ "data.product" ])%>
+
+<%= @price %><br><br><br>
+
+<% @price.each do |price|%>
+    <%= price.product.name%>
+    <%= price.id%>
+    <%= price.unit_amount/100.to_f%>
+    <%= price.currency%>
+    <%= price.recurring.interval%>
+    <br>
+    <br>
+    <%= button_to "Payment", checkout_create_path(price_id: price.id), data: { disable_with: "validating .."}, data: { controller: "payment-button", action: "click->payment-button#handleClick"},
+        class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %> 
+
+<%end%>
+    <br>
+    <br>
+        <br>
+    <br>
+

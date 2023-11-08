@@ -1,0 +1,27 @@
+<!-- <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+    <h1 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">My Blog</h1>
+</div>
+ <div>
+    <%= link_to "New post", new_blog_post_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    
+    <% @blog_posts.each do |post|%>
+    <div>
+        <div><%= link_to "#{post.title}", post %></div>
+        <div>Body: <%= post.body%></div>
+    </div>
+    <%end%>
+
+</div> -->
+
+
+<div class="w-full">
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Blog Posts</h1>
+    <%= link_to "New Blog Post", new_blog_post_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  </div>
+
+  <div id="posts" class="min-w-full">
+    <%= render @blog_posts %>
+  </div>
+</div>

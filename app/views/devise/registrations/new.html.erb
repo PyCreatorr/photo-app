@@ -1,5 +1,18 @@
+
+<script>
+  //Stripe.setPublishableKey("<%= ENV['STRIPE_TEST_PUBLISHABLE_KEY'] %>");
+  //var stripe = Stripe("<%= ENV['STRIPE_TEST_PUBLISHABLE_KEY'] %>");
+  //from heroku env variables 
+  //var stripe = Stripe("<%= ENV['STRIPE_TEST_PUBLISHABLE_KEY'] %>");
+  //from credentials
+  //Stripe.api_key = Rails.application.credentials.dig(:stripe, :private_key)
+  var stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public_key) %>"); 
+  
+</script>
+
+<%# <%= Payment.plan_list %> 
 <div class="h-full w-full max-w-3xl mx-auto align-middle">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'}) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'cc_form bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'}) do |f| %>
     <h2 class="text-center">Register</h2>
     <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -25,6 +38,34 @@
       <%= f.label :password_confirmation, "Confirm password", class: label_classes %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: input_classes %>
     </div>
+
+    <!-- Stripe payment part beginn -->
+    <!--<%= fields_for(:payment) do |p| %>
+      <div class="mb-4">
+        <div>
+          <%= p.label :card_number, "Card Number", data: { stripe: 'label'} %>
+          <%= p.text_field :card_number, class: "form-control", required: true, data: {stripe: 'number'} %>
+        </div>
+        <div>
+          <%= p.label :card_cvc, "Card CVC", data: { stripe: 'label'} %>
+          <%= p.text_field :card_cvc, class: "form-control", required: true, data: {stripe: 'cvc'} %>
+        </div>
+        <div>
+          <%= p.label :card_expires, "Card Expires", data: { stripe: 'label'} %>
+        </div>
+        <div>
+          <%= p.select :card_expires_month, options_for_select(Payment.month_options),
+          { include_blank: 'Month'}, "data-stripe" => "exp-month", class: "form-control", required: true %>
+        </div>
+        <div>
+          <%= p.select :card_expires_year, options_for_select(Payment.year_options.push),
+          { include_blank: 'Year'}, data: {stripe: "exp-year"}, 
+          class: "form-control", required: true %>
+        </div>
+      </div>
+    <% end %> -->
+    <!-- Stripe payment part end -->
+      
 
     <div class="flex items-center justify-between content-end">
       <%= f.submit "Register", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-6 rounded focus:outline-none focus:shadow-outline" %>

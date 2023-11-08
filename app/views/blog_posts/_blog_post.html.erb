@@ -1,0 +1,18 @@
+<div id="<%= dom_id blog_post %>">
+  <p class="my-5">
+    <%= link_to "#{blog_post.title}", blog_post %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Body:</strong>
+    <%= blog_post.body %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this blog_post", blog_post, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this blog_post", edit_blog_post_path(blog_post), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
+
+

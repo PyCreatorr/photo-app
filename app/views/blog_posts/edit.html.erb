@@ -1,0 +1,18 @@
+<!-- <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+    <h1 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Edit Blog Post</h1>
+</div>
+
+<%= render partial: "form", locals: {blog_post: @blog_post }%>
+<%= button_to "Delete", blog_post_path(@blog_post), method: :delete, data:{turbo_confirm: "Are you sure?"} %>
+<%= blog_posts_path%>
+-->
+
+
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">Editing post</h1>
+
+<%= render partial: "form", locals: {blog_post: @blog_post }%>
+
+  <%= link_to "Show this Blog Post", @blog_post, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to "Back to Blog Posts", blog_posts_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+</div>
