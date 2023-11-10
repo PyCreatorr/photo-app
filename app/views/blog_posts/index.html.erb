@@ -7,7 +7,7 @@
     <% @blog_posts.each do |post|%>
     <div>
         <div><%= link_to "#{post.title}", post %></div>
-        <div>Body: <%= post.body%></div>
+        <div>Body: <%= post.content.body%></div>
     </div>
     <%end%>
 
