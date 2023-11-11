@@ -25,3 +25,6 @@
     <%= render @blog_posts %>
   </div>
 </div>
+<div class="my-16">
+  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+</div>

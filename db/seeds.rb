@@ -11,3 +11,7 @@
 #     password: "password123",
 #     password_confirmation: "password123"
 # )
+
+5.times do |i|
+    BlogPost.create(title: "Blog Post #{i}", content: "Hello world", published_at: Time.current)
+end
