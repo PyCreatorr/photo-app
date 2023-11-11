@@ -15,3 +15,9 @@
 # 5.times do |i|
 #     BlogPost.create(title: "Blog Post #{i}", content: "Hello world", published_at: Time.current)
 # end
+
+# first_or_initialize - create a new record in memory if doesnt exists
+# 10.times do |i|
+#     blog_post = BlogPost.where(title: "Blog Post #{i}").first_or_initialize
+#     blog_post.update(content: "Hello world", published_at: Time.current)
+# end
