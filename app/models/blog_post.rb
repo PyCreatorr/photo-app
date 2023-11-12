@@ -1,5 +1,6 @@
 class BlogPost < ApplicationRecord
     # Action text migration
+    has_one_attached :cover_image
     has_rich_text :content
 
     validates :title, presence: true

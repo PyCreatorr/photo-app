@@ -1,4 +1,9 @@
 <div id="<%= dom_id blog_post %>">
+
+
+  <p class="my-5">
+    <%= image_tag blog_post.cover_image if blog_post.cover_image.present? %>
+  </p>
   <p class="my-5">
     <%= link_to "#{blog_post.title}", blog_post %>
   </p>
