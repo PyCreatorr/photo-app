@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :scans do
+    resource :uploaded_image, only: [:destroy, :update], module: :scans
+    resource :languages, only: [:update], module: :scans
+  end
+
+  # put "scans/languages", to: "scans/languages#update"
+  # patch "scans/languages", to: "scans/languages#update"
   # we say devise to show first for controllers registrations into our registrations_controller.rb.
   # To overwrite the devise controllers function create. And after that, show all others functions in devise.
   # devise_for :users, :controllers => { :registrations => 'registrations' }

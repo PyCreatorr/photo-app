@@ -1,0 +1,25 @@
+<div id="<%= dom_id scan %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= link_to "#{scan.title}", scan.title %>
+  </p>
+
+  <% if scan.uploaded_image.present? %>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Uploaded image:</strong>
+      <%= image_tag scan.uploaded_image %>
+    </p>
+  <%end%>
+
+ 
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Img scan:</strong>
+    <%= scan.scan_content.body %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this scan", scan, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this scan", edit_scan_path(scan), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

@@ -2,7 +2,16 @@
 
 
   <p class="my-5">
-    <%= image_tag blog_post.cover_image if blog_post.cover_image.present? %>
+        <% if blog_post.cover_image.present? %>
+        <%#= image_tag blog_post.cover_image.representation(resize_to_limit: [200, 200]) %>
+        <%= image_tag blog_post.cover_image %>
+        <%#= rails_blob_path %>
+      <% else %>
+        <%#= link_to rails_blob_path(blog_post.cover_image, disposition: "attachment") do %>
+          <%#= image_tag "placeholder.png", alt: "Download file" %>
+        <%# end %>
+      <% end %>
+
   </p>
   <p class="my-5">
     <%= link_to "#{blog_post.title}", blog_post %>

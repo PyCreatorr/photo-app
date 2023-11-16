@@ -88,7 +88,8 @@ gem 'stripe', '~> 9.0'
 
 gem "aws-sdk-s3", require: false
 
-
-
-
 gem "pagy", "~> 6.1"
+
+gem 'rtesseract'
+
+gem 'requestjs-rails'

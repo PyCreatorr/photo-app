@@ -1,0 +1,50 @@
+<%= form_with(model: scan, class: "contents") do |form| %>
+  <% if scan.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(scan.errors.count, "error") %> prohibited this scan from being saved:</h2>
+
+      <ul>
+        <% scan.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+        <%= form.label :uploaded_image %>
+          <% if scan.uploaded_image.present? %>
+
+            <div id="<%= dom_id(scan, :uploaded_image) %>">          
+              <%= image_tag scan.uploaded_image, class:"w-1/3" %>
+              <%= link_to "Delete Uploaded Image", scan_uploaded_image_path(scan), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are You sure?"}, class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+              
+              <div data-controller="language">
+                <%#= select_tag(:language_scan, options_for_select([['eng', 1], ['deu', 2], ['fra', 3]], 1), data: {action: "change->language#change"}, class:'form-select') %>
+                <%= form.select :language, ["eng", "deu", "fra", "ita"], {prompt: "Select a language", :selected => scan.language}, {class:'form-select', data: {action: "change->language#change"} } %>
+            </div>
+
+                <%#= link_to "Scan Image", params: {"language": :language},  data: { controller: "language", action: "click->language#handleClick"}, method: :PATCH, data: {turbo_method: :PATCH}, class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+                <%= link_to "Scan Image", scan_uploaded_image_path(scan, language: :language), method: :PATCH, data: {turbo_method: :PATCH}, class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+              </div>
+            <%#= link_to "Scan Image", scan_uploaded_image_path(scan, language_scan: :language_scan), params: {"language_scan": :language_scan}, method: :PATCH, data: {turbo_method: :PATCH}, class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+          <%end%>
+
+        <%= form.file_field :uploaded_image, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
+  <div class="my-5">
+    <%= form.label :scan_content %>
+    <%= form.rich_text_area :scan_content, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
+
