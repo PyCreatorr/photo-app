@@ -36,3 +36,4 @@ COPY . /app/
 # Compile assets
 ARG RAILS_ENV=development
 RUN if [ "$RAILS_ENV" = "production" ]; then SECRET_KEY_BASE=$(rake secret) bundle exec rake assets:precompile; fi
+# CMD ["rails", "server", "-b", "0.0.0.0"]
